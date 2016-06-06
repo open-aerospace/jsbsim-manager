@@ -11,6 +11,7 @@ Tests for `jsbsim_manager` module.
 
 import sys
 import unittest
+import xml.etree.ElementTree as ET
 
 from jsbsim_manager import jsbsim_manager
 
@@ -35,21 +36,43 @@ class TestJsbsim_manager(unittest.TestCase):
         # Pure default values
         init = case.initial_conditions()
 
-        self.maxDiff = 1500
-        self.assertEqual(init, """<?xml version="1.0" ?>
-<initialize name="Initial Conditions">
-  <ubody unit="M/SEC">0.000000</ubody>
-  <vbody unit="M/SEC">0.000000</vbody>
-  <wbody unit="M/SEC">0.000000</wbody>
-  <phi unit="DEG">0.000000</phi>
-  <theta unit="DEG">0.000000</theta>
-  <psi unit="DEG">0.000000</psi>
-  <altitude unit="M">0.000000</altitude>
-  <latitude unit="DEG">0.000000</latitude>
-  <longitude unit="DEG">0.000000</longitude>
-  <elevation unit="M">0.000000</elevation>
-</initialize>
-""")
+        # unwrap XML
+        initialize = ET.fromstring(init)
+        self.assertEqual(initialize.tag, 'initialize')
+        for element in initialize:
+            if element.tag == 'ubody':
+                self.assertEqual(element.get("unit"), "M/SEC")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            elif element.tag == 'vbody':
+                self.assertEqual(element.get("unit"), "M/SEC")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            elif element.tag == 'wbody':
+                self.assertEqual(element.get("unit"), "M/SEC")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            elif element.tag == 'phi':
+                self.assertEqual(element.get("unit"), "DEG")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            elif element.tag == 'theta':
+                self.assertEqual(element.get("unit"), "DEG")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            elif element.tag == 'psi':
+                self.assertEqual(element.get("unit"), "DEG")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            elif element.tag == 'altitude':
+                self.assertEqual(element.get("unit"), "M")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            elif element.tag == 'latitude':
+                self.assertEqual(element.get("unit"), "DEG")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            elif element.tag == 'longitude':
+                self.assertEqual(element.get("unit"), "DEG")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            elif element.tag == 'elevation':
+                self.assertEqual(element.get("unit"), "M")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            else:
+                # Should not get here
+                self.fail("Unrecognised element in initial conditions doc")
 
     def test_init_override(self):
         case = jsbsim_manager.Case()
@@ -57,21 +80,44 @@ class TestJsbsim_manager(unittest.TestCase):
         # Pure default values
         init = case.initial_conditions(vbody=2.5, latitude=45.0)
 
-        self.maxDiff = 1500
-        self.assertEqual(init, """<?xml version="1.0" ?>
-<initialize name="Initial Conditions">
-  <ubody unit="M/SEC">0.000000</ubody>
-  <vbody unit="M/SEC">2.500000</vbody>
-  <wbody unit="M/SEC">0.000000</wbody>
-  <phi unit="DEG">0.000000</phi>
-  <theta unit="DEG">0.000000</theta>
-  <psi unit="DEG">0.000000</psi>
-  <altitude unit="M">0.000000</altitude>
-  <latitude unit="DEG">45.000000</latitude>
-  <longitude unit="DEG">0.000000</longitude>
-  <elevation unit="M">0.000000</elevation>
-</initialize>
-""")
+        # unwrap XML
+        initialize = ET.fromstring(init)
+        self.assertEqual(initialize.tag, 'initialize')
+        for element in initialize:
+            if element.tag == 'ubody':
+                self.assertEqual(element.get("unit"), "M/SEC")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            elif element.tag == 'vbody':
+                self.assertEqual(element.get("unit"), "M/SEC")
+                self.assertAlmostEqual(float(element.text), 2.5)
+            elif element.tag == 'wbody':
+                self.assertEqual(element.get("unit"), "M/SEC")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            elif element.tag == 'phi':
+                self.assertEqual(element.get("unit"), "DEG")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            elif element.tag == 'theta':
+                self.assertEqual(element.get("unit"), "DEG")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            elif element.tag == 'psi':
+                self.assertEqual(element.get("unit"), "DEG")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            elif element.tag == 'altitude':
+                self.assertEqual(element.get("unit"), "M")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            elif element.tag == 'latitude':
+                self.assertEqual(element.get("unit"), "DEG")
+                self.assertAlmostEqual(float(element.text), 45.0)
+            elif element.tag == 'longitude':
+                self.assertEqual(element.get("unit"), "DEG")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            elif element.tag == 'elevation':
+                self.assertEqual(element.get("unit"), "M")
+                self.assertAlmostEqual(float(element.text), 0.0)
+            else:
+                # Should not get here
+                self.fail("Unrecognised element in initial conditions doc")
+
 
 if __name__ == '__main__':
     sys.exit(unittest.main())
