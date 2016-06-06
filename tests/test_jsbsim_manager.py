@@ -24,9 +24,10 @@ class TestJsbsim_manager(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_000_something(self):
-        pass
-        
+    def test_smoke(self):
+        # Really simple smoke test
+        case = jsbsim_manager.Case()
+        runer = jsbsim_manager.RunManager(case)
 
 
 if __name__ == '__main__':
