@@ -11,7 +11,7 @@ git config user.name "Travis CI"
 git config user.email "nathan.bergey@gmail.com"
 
 # Get the old gh-pages branch
-git remote add github "https://${GH_TOKEN}@github.com/open-aerospace/jsbsim-manager.git"
+git remote add github "https://${GH_TOKEN}@github.com/open-aerospace/jsbsim-manager.git" > /dev/null 2>&1
 git fetch github gh-pages
 git checkout gh-pages
 
@@ -25,4 +25,4 @@ x=$(for i in `git log --all --pretty=format:{\"hash\":\ \"%h\"\,\ \"time\":\"%ad
 cd _build/html
 git add .
 git commit -m "Travis Deploy to GitHub Pages"
-git push github gh-pages
+git push --quiet github gh-pages > /dev/null 2>&1
