@@ -26,18 +26,16 @@ class TestJsbsim_manager(unittest.TestCase):
 
     def test_smoke(self):
         # Really simple smoke test
-        case = jsbsim_manager.Case()
+        case = jsbsim_manager.Case(None)
         runner = jsbsim_manager.RunManager(case)
         self.assertEqual(type(runner), jsbsim_manager.RunManager)
 
     def test_init_default(self):
-        case = jsbsim_manager.Case()
-
         # Pure default values
-        init = case.initial_conditions()
+        init = jsbsim_manager.InitialConditions()
 
         # unwrap XML
-        initialize = ET.fromstring(init)
+        initialize = ET.fromstring(init.document)
         self.assertEqual(initialize.tag, 'initialize')
         for element in initialize:
             if element.tag == 'ubody':
@@ -75,13 +73,11 @@ class TestJsbsim_manager(unittest.TestCase):
                 self.fail("Unrecognised element in initial conditions doc")
 
     def test_init_override(self):
-        case = jsbsim_manager.Case()
-
-        # Pure default values
-        init = case.initial_conditions(vbody=2.5, latitude=45.0)
+        # Use non-default values for vbody and latitude
+        init = jsbsim_manager.InitialConditions(vbody=2.5, latitude=45.0)
 
         # unwrap XML
-        initialize = ET.fromstring(init)
+        initialize = ET.fromstring(init.document)
         self.assertEqual(initialize.tag, 'initialize')
         for element in initialize:
             if element.tag == 'ubody':
