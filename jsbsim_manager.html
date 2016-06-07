@@ -1,0 +1,255 @@
+<!doctype html>
+
+
+<html >
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>jsbsim_manager package &mdash; JSBSim Manager 0.1.0 documentation</title>
+    
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/assets/style.css">
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+
+
+      <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/apple-touch-icon-57x57.png">
+      <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/apple-touch-icon-60x60.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-touch-icon-76x76.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/apple-touch-icon-114x114.png">
+      <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/apple-touch-icon-120x120.png">
+      <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/apple-touch-icon-144x144.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/apple-touch-icon-152x152.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon-180x180.png">
+      <link rel="icon" type="image/png" href="/assets/img/favicon-32x32.png" sizes="32x32">
+      <link rel="icon" type="image/png" href="/assets/img/android-chrome-192x192.png" sizes="192x192">
+      <link rel="icon" type="image/png" href="/assets/img/favicon-96x96.png" sizes="96x96">
+      <link rel="icon" type="image/png" href="/assets/img/favicon-16x16.png" sizes="16x16">
+      <link rel="shortcut icon" href="favicon.ico">
+      <meta name="msapplication-TileColor" content="#6677cc">
+      <meta name="msapplication-TileImage" content="/assets/img/mstile-144x144.png">
+      <meta name="theme-color" content="#6677cc">
+    <link rel="top" title="JSBSim Manager 0.1.0 documentation" href="index.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="Usage" href="usage.html" /> 
+  </head>
+  <body role="document">
+ <section class="hero is-primary is-left is-bold">
+   <div class="hero-header">
+    <header class="header">
+     <div class="container">
+
+      <div class="header-left">
+       <a class="header-item" href="/">
+        <img src="/assets/img/title.png" alt="open-aerospace">
+       </a>
+      </div>
+
+      <div id="header-menu" class="header-right header-menu">
+       <span class="header-item">
+        <a  href="/">Home</a>
+       </span>
+       <span class="header-item">
+        <a  href="/about/">About</a>
+       </span>
+       <span class="header-item">
+        <a class="button is-info is-outlined is-inverted" href="https://github.com/open-aerospace">
+         <i class="fa fa-github"></i>
+         GitHub
+         </a>
+       </span>
+      </div>
+     </div>
+    </header>
+   </div>
+  </section>
+
+
+<section class="section">
+
+ <div class="container">
+  <div class="columns">
+      <div class="sphinxsidebar column is-3" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+          
+            
+            
+              <div class="toc">
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">JSBSim Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#stable-release">Stable release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#from-sources">From sources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">jsbsim_manager package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-jsbsim_manager.jsbsim_manager">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#tips">Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#development-lead">Development Lead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#contributors">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="history.html#id1">0.1.0 (2016-06-06)</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            
+          
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>  
+
+    <div class="column">
+     <div class="body content" role="main">
+      
+  <div class="section" id="jsbsim-manager-package">
+<h1>jsbsim_manager package</h1>
+<div class="section" id="module-jsbsim_manager.jsbsim_manager">
+<span id="module-contents"></span><h2>Module Contents</h2>
+<dl class="class">
+<dt id="jsbsim_manager.jsbsim_manager.Case">
+<em class="property">class </em><code class="descclassname">jsbsim_manager.jsbsim_manager.</code><code class="descname">Case</code><span class="sig-paren">(</span><em>run_conditions, init=&lt;jsbsim_manager.jsbsim_manager.InitialConditions object&gt;, output_list=[&lt;jsbsim_manager.jsbsim_manager.Output object at 0x2b808eb7b828&gt;]</em><span class="sig-paren">)</span></dt>
+<dd><p>Information that makes up a JSBSim case. The usual JSBSim runtime
+directory should look like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>.
+├── aircraft
+│   └── rocket
+│       ├── init.xml
+│       └── rocket.xml
+├── engine
+│   ├── motor_nozzle.xml
+│   └── motor.xml
+├── output.xml
+└── run.xml
+</pre></div>
+</div>
+<p>Aircraft and Engine data can either be existing XML files, or an
+<cite>openrocketdoc</cite> document. Initial conditions, output file definitions, and
+the run files are described by this class.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="jsbsim_manager.jsbsim_manager.DEFAULT_INIT">
+<code class="descclassname">jsbsim_manager.jsbsim_manager.</code><code class="descname">DEFAULT_INIT</code><em class="property"> = &lt;jsbsim_manager.jsbsim_manager.InitialConditions object&gt;</em></dt>
+<dd><p>A pre-built default initial conditions:</p>
+<ul class="simple">
+<li>Latitude, Longitude = Null Island (00.0, 000.0)</li>
+<li>ECEF velocity: 0</li>
+<li>Altitude: 0</li>
+<li>Attitude: roll/pitch/yaw = 0 (X pointed North)</li>
+</ul>
+</dd></dl>
+
+<dl class="class">
+<dt id="jsbsim_manager.jsbsim_manager.InitialConditions">
+<em class="property">class </em><code class="descclassname">jsbsim_manager.jsbsim_manager.</code><code class="descname">InitialConditions</code><span class="sig-paren">(</span><em>ubody=0</em>, <em>vbody=0</em>, <em>wbody=0</em>, <em>phi=0</em>, <em>theta=0</em>, <em>psi=0</em>, <em>altitude=0</em>, <em>latitude=0</em>, <em>longitude=0</em>, <em>elevation=0</em><span class="sig-paren">)</span></dt>
+<dd><p>Store initial conditions document</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="jsbsim_manager.jsbsim_manager.JSBSimWriter">
+<em class="property">class </em><code class="descclassname">jsbsim_manager.jsbsim_manager.</code><code class="descname">JSBSimWriter</code></dt>
+<dd><p>A Writing class for JSBSim XML</p>
+<dl class="attribute">
+<dt id="jsbsim_manager.jsbsim_manager.JSBSimWriter.document">
+<code class="descname">document</code></dt>
+<dd><p>Return an XML document (<cite>str</cite>)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="jsbsim_manager.jsbsim_manager.Output">
+<em class="property">class </em><code class="descclassname">jsbsim_manager.jsbsim_manager.</code><code class="descname">Output</code><span class="sig-paren">(</span><em>outtype</em>, <em>destination</em>, <em>datarate</em>, <em>prop_list</em>, <em>port=5123</em><span class="sig-paren">)</span></dt>
+<dd><p>Store output file</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="jsbsim_manager.jsbsim_manager.RunManager">
+<em class="property">class </em><code class="descclassname">jsbsim_manager.jsbsim_manager.</code><code class="descname">RunManager</code><span class="sig-paren">(</span><em>case</em><span class="sig-paren">)</span></dt>
+<dd><p>Run a JSBSim instance for a case</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>case</strong> (<a class="reference internal" href="#jsbsim_manager.jsbsim_manager.Case" title="jsbsim_manager.jsbsim_manager.Case"><em>Case</em></a>) &#8211; A JSBSim Case object to build into a file structure and run.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <ul>
+        <li class="right ">
+          <a href="usage.html" title="Usage"
+             accesskey="P">previous</a></li>
+        <li class="right ">
+          <a href="contributing.html" title="Contributing"
+             accesskey="N">next</a></li>
+        <li class="right is-text-right">
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a></li> 
+      </ul>
+    </div>
+
+     </div>
+   </div>
+
+  </div>
+ </div>
+
+  </section>
+    <footer class="footer" role="contentinfo">
+    <div class="container">
+        &copy; Copyright 2016, Nathan Bergey.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
+    </div>
+    </footer>
+  </body>
+</html>
