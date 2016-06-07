@@ -4,13 +4,19 @@ JSBSim Manager
 
 .. image:: https://img.shields.io/pypi/v/jsbsim_manager.svg
         :target: https://pypi.python.org/pypi/jsbsim_manager
+        :alt: PyPi Version
 
 .. image:: https://img.shields.io/travis/open-aerospace/jsbsim-manager.svg
         :target: https://travis-ci.org/open-aerospace/jsbsim-manager
+        :alt: Build Status
 
 .. image:: https://requires.io/github/open-aerospace/jsbsim-manager/requirements.svg?branch=master
         :target: https://requires.io/github/open-aerospace/jsbsim-manager/requirements/?branch=master
         :alt: Requirements Status
+
+.. image:: https://coveralls.io/repos/github/open-aerospace/jsbsim-manager/badge.svg?branch=master
+        :target: https://coveralls.io/github/open-aerospace/jsbsim-manager?branch=master
+        :alt: Code Coverage
 
 Manager for JSBSim case files and support for running simulations in parallel
 
