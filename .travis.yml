@@ -18,11 +18,8 @@ install:
 
 # command to run tests, e.g. python setup.py test
 script:
-  - tox
+  - tox -e ${TOXENV}
   - coverage run --source=jsbsim_manager setup.py test
-
-# command to run tests, e.g. python setup.py test
-script: tox -e ${TOXENV}
 
 after_success: |
     [ $TOXENV = py35 ] &&
