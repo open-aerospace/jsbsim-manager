@@ -2,6 +2,7 @@
 set -e # exit with nonzero exit code if anything fails
 
 # go to the out directory and create a *new* Git repo
+mkdir _build/html
 cd _build/html
 git init
 
@@ -9,13 +10,19 @@ git init
 git config user.name "Travis CI"
 git config user.email "nathan.bergey@gmail.com"
 
-# The first and only commit to this new Git repo contains all the
-# files present with the commit message "Deploy to GitHub Pages".
+# Get the old gh-pages branch
+git remote add github "https://${GH_TOKEN}@github.com/open-aerospace/jsbsim-manager.git"
+git fetch github gh-pages
+git checkout gh-pages
+
+# Now go back and make the site
+cd ../..
+make html
+cp _config.yml _build/html/
+x=$(for i in `git log --all --pretty=format:{\"hash\":\ \"%h\"\,\ \"time\":\"%ad\"},`; do echo -n "${i} "; done| sed 's/, $//') ; echo "["$x"]" > _build/html/git.json
+
+# Now go into the repo and commit whatever happened
+cd _build/html
 git add .
 git commit -m "Travis Deploy to GitHub Pages"
-
-# Force push from the current repo's master branch to the remote
-# repo's gh-pages branch. (All previous history on the gh-pages branch
-# will be lost, since we are overwriting it.) We redirect any output to
-# /dev/null to hide any sensitive credential data that might otherwise be exposed.
-git push --force --quiet "https://${GH_TOKEN}@github.com/open-aerospace/jsbsim-manager.git" master:gh-pages > /dev/null 2>&1
+git push github gh-pages
