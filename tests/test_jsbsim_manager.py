@@ -158,9 +158,9 @@ class TestJsbsim_manager(unittest.TestCase):
         # output fields.
         self.assertEqual(len(output), 2)
         self.assertEqual(output[0].get("caption"), "Altitude MSL [m]")
-        self.assertEqual(output[0].text, "position/h-sl-meters")
+        self.assertEqual(output[0].text.strip(), "position/h-sl-meters")
         self.assertEqual(output[1].get("caption"), "Velocity Down [fps]")
-        self.assertEqual(output[1].text, "velocities/v-down-fps")
+        self.assertEqual(output[1].text.strip(), "velocities/v-down-fps")
 
 
 if __name__ == '__main__':
