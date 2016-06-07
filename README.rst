@@ -9,9 +9,8 @@ JSBSim Manager
         :target: https://travis-ci.org/open-aerospace/jsbsim-manager
 
 .. image:: https://requires.io/github/open-aerospace/jsbsim-manager/requirements.svg?branch=master
-        :target: https://requires.io/github/open-aerospace/jsbsim-manager/requirements?branch=master
-        :alt: Dependencies
-
+        :target: https://requires.io/github/open-aerospace/jsbsim-manager/requirements/?branch=master
+        :alt: Requirements Status
 
 Manager for JSBSim case files and support for running simulations in parallel
 
