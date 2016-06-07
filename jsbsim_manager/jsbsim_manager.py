@@ -83,7 +83,53 @@ class InitialConditions(JSBSimWriter):
         return init_doc
 
 
+class Output(JSBSimWriter):
+    """Store output file
+    """
+
+    def __init__(self, outtype, destination, datarate, prop_list, port=5123):
+        self.outtype = outtype
+        self.destination = destination
+        self.datarate = datarate
+        self.prop_list = prop_list
+        self.port = port
+
+    def _document(self):
+
+        out_doc = ET.Element('output')
+        out_doc.attrib['name'] = self.destination
+        out_doc.attrib['rate'] = "%f" % self.datarate
+
+        if self.outtype.lower() == 'csv' or self.outtype.lower() == 'file':
+            out_doc.attrib['type'] = "CSV"
+
+        if self.outtype.lower() == 'udp':
+            out_doc.attrib['type'] = "SOCKET"
+            out_doc.attrib['protocol'] = "UDP"
+            out_doc.attrib['port'] = "%d" % self.port
+
+        for prop in self.prop_list:
+            p = ET.SubElement(out_doc, 'property')
+            p.attrib['caption'] = prop[0]
+            p.text = prop[1]
+
+        return out_doc
+
+
 DEFAULT_INIT = InitialConditions()
+"""A pre-built default initial conditions:
+
+* Latitude, Longitude = Null Island (00.0, 000.0)
+* ECEF velocity: 0
+* Altitude: 0
+* Attitude: roll/pitch/yaw = 0 (X pointed North)
+"""
+
+
+# Easy handler for JSBSim properites
+PROPERTIES = {
+    'altitudeMSL': ("Altitude MSL [m]", "position/h-sl-meters"),
+}
 
 
 class Case(object):

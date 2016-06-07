@@ -114,6 +114,54 @@ class TestJsbsim_manager(unittest.TestCase):
                 # Should not get here
                 self.fail("Unrecognised element in initial conditions doc")
 
+    def test_out_csv(self):
+        out = jsbsim_manager.Output('File', "filename", 20, [])
+
+        # unwrap XML
+        output = ET.fromstring(out.document)
+        self.assertEqual(output.tag, 'output')
+        self.assertEqual(output.get("type"), "CSV")
+        self.assertEqual(output.get("name"), "filename")
+        self.assertAlmostEqual(float(output.get("rate")), 20)
+
+        # No output fields.
+        self.assertEqual([e for e in output], [])
+
+    def test_out_UDP(self):
+        out = jsbsim_manager.Output('UDP', "localhost", 20, [])
+
+        # unwrap XML
+        output = ET.fromstring(out.document)
+        self.assertEqual(output.tag, 'output')
+        self.assertEqual(output.get("type"), "SOCKET")
+        self.assertEqual(output.get("protocol"), "UDP")
+        self.assertEqual(output.get("name"), "localhost")
+        self.assertEqual(int(output.get("port")), 5123)
+        self.assertAlmostEqual(float(output.get("rate")), 20)
+
+        # No output fields.
+        self.assertEqual([e for e in output], [])
+
+    def test_out_csv_fields(self):
+        out = jsbsim_manager.Output('File', "filename", 20, [
+            jsbsim_manager.PROPERTIES['altitudeMSL'],
+            ("Velocity Down [fps]", "velocities/v-down-fps"),
+        ])
+
+        # unwrap XML
+        output = ET.fromstring(out.document)
+        self.assertEqual(output.tag, 'output')
+        self.assertEqual(output.get("type"), "CSV")
+        self.assertEqual(output.get("name"), "filename")
+        self.assertAlmostEqual(float(output.get("rate")), 20)
+
+        # output fields.
+        self.assertEqual(len(output), 2)
+        self.assertEqual(output[0].get("caption"), "Altitude MSL [m]")
+        self.assertEqual(output[0].text, "position/h-sl-meters")
+        self.assertEqual(output[1].get("caption"), "Velocity Down [fps]")
+        self.assertEqual(output[1].text, "velocities/v-down-fps")
+
 
 if __name__ == '__main__':
     sys.exit(unittest.main())
