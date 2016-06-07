@@ -13,9 +13,20 @@ env:
   - TOXENV=pypy
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -U tox
+install:
+ - pip install -r requirements_dev.txt
+
+# command to run tests, e.g. python setup.py test
+script:
+  - tox
+  - coverage run --source=jsbsim_manager setup.py test
 
 # command to run tests, e.g. python setup.py test
 script: tox -e ${TOXENV}
 
+after_success: |
+    [ $TOXENV = py35 ] &&
+    coveralls &&
+    cd docs &&
+    make html
 
