@@ -132,6 +132,11 @@ PROPERTIES = {
 }
 
 
+DEFAULT_OUTPUT = Output('csv', "simulation_data.csv", 100, [
+    PROPERTIES['altitudeMSL'],
+])
+
+
 class Case(object):
     """Information that makes up a JSBSim case. The usual JSBSim runtime
     directory should look like this::
@@ -153,7 +158,7 @@ class Case(object):
     the run files are described by this class.
     """
 
-    def __init__(self, run_conditions, init=DEFAULT_INIT, output_list=[]):
+    def __init__(self, run_conditions, init=DEFAULT_INIT, output_list=[DEFAULT_OUTPUT]):
         self.init_doc = init.document
         self.outputs = output_list
         self.run_conditions = run_conditions
